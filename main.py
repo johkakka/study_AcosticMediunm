@@ -11,12 +11,8 @@ def get_meshgrid(x, y, nx, ny, margin=0.1):
                          np.linspace(y_min, y_max, ny))
     return xx, yy
 
-def main():
-    # 次元数を設定
-    D = 2
-    # クラスタ数を指定
-    K = 2
 
+def main():
     csv_input = pd.read_csv(filepath_or_buffer="data.csv", encoding="ms932", sep=",",
                             header=None, names=('x', 'y'))
     data = csv_input.values
@@ -29,9 +25,6 @@ def main():
     labels = model.classify(data)
 
     colors = [(0.5, 0.5, 1), (1, 0.5, 0.5)]
-    # plt.scatter(x, y, c=[colors[int(label)] for label in labels])
-    # plt.scatter(model.Mu.T[0], model.Mu.T[1], c="k", marker="x")
-    # plt.show()
 
     plt.plot()
     xx, yy = get_meshgrid(x, y, nx=500, ny=500, margin=0.1)
@@ -44,7 +37,6 @@ def main():
 
     print("Mu:\n", model.Mu)
     print("Sigma:\n",model.Sigma)
-
 
 
 if __name__ == '__main__':
